@@ -1,4 +1,6 @@
 class Application < ActiveRecord::Base
+  SCHEMA_NAME = "APPLICATION".freeze
+
   has_many :borrowers
   has_many :incomes
   has_many :liabilities

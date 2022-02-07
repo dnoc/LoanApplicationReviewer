@@ -1,4 +1,7 @@
 class Borrower < ActiveRecord::Base
+  SCHEMA_NAME = "BORROWER".freeze
+  COBORROWER_SCHEMA_NAME = "COBORROWER".freeze
+
   belongs_to :application
 
   attr_accessor :name, :credit_score

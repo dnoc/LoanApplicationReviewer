@@ -1,4 +1,6 @@
 class Income < ActiveRecord::Base
+  SCHEMA_NAME = "INCOME".freeze
+
   belongs_to :application
 
   attr_accessor :name, :kind, :monthly_amount

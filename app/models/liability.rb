@@ -1,4 +1,6 @@
 class Liability < ActiveRecord::Base
+  SCHEMA_NAME = "LIABILITY".freeze
+
   belongs_to :application
 
   attr_accessor :comma_separated_names, :kind, :monthly_payment, :outstanding_balance
