@@ -1,4 +1,4 @@
-RSpec.describe ApplicationService do
+RSpec.describe ApplicationObjectFactory do
   describe "#from_string" do
     subject { described_class.from_string(string: input, application_id: 1) }
 
