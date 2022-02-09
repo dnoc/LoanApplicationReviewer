@@ -9,12 +9,12 @@ class ApplicationDecision < ActiveRecord::Base
     @application_id = application_id
     @dti = dti
     @credit_score = credit_score
-    @approved = _make_approval_decision
+    @approved = _is_approved?
   end
 
   private
 
-  def _make_approval_decision
+  def _is_approved?
     @dti < BigDecimal("0.5") && @credit_score > 620
   end
 end

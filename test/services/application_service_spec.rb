@@ -1,5 +1,3 @@
-require_relative '../src/services/application_service.rb'
-
 RSpec.describe ApplicationService do
   describe "#review" do
     subject { described_class.review(file: file) }
