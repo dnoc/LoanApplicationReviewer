@@ -13,4 +13,9 @@ class Borrower < ActiveRecord::Base
     @name = name
     @credit_score = credit_score
   end
+
+  def self.build_from_string(string:, application_id:)
+    tokens = string.split(" ")
+    Borrower.new(application_id: application_id, name: tokens[1], credit_score: tokens[2])
+  end
 end

@@ -17,6 +17,11 @@ class Application < ActiveRecord::Base
     @provided_id = provided_id
   end
 
+  def self.build_from_string(string:)
+    tokens = string.split(" ")
+    Application.new(provided_id: tokens[1])
+  end
+
   def credit_score
     borrowers.min_by { |b| b.credit_score }
   end

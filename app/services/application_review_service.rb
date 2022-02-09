@@ -14,11 +14,11 @@ class ApplicationReviewService
     applications = []
     file.readlines("") do |line|
       if (line.present?)
-        object = ApplicationObjectFactory.from_string(string: line)
+        object = ApplicationObjectFactory.from_string(string: line, application_id: applications.last&.id)
         object.save!
 
         if object.is_a?(Application)
-          applications << object
+          applications << object # reload?
         end
       end
     end
