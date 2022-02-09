@@ -1,5 +1,6 @@
 class Liability < ActiveRecord::Base
   SCHEMA_NAME = "LIABILITY".freeze
+  MIN_APPLICABLE_PAYMENTS = 10.freeze
 
   belongs_to :application
 
@@ -24,5 +25,9 @@ class Liability < ActiveRecord::Base
       monthly_payment: tokens[3],
       outstanding_balance: tokens[4]
     )
+  end
+
+  def applicable_to_dti?
+    outstanding_balance / monthly_payment > MIN_APPLICABLE_PAYMENTS
   end
 end

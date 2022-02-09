@@ -23,7 +23,7 @@ class Application < ActiveRecord::Base
   end
 
   def credit_score
-    borrowers.min_by { |b| b.credit_score }
+    borrowers.map { |b| b.credit_score }.min
   end
 
   def dti
