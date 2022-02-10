@@ -1,4 +1,4 @@
-class Application < ActiveRecord::Base
+class LoanApplication < ActiveRecord::Base
   SCHEMA_NAME = "APPLICATION".freeze
 
   has_many :borrowers
@@ -13,13 +13,13 @@ class Application < ActiveRecord::Base
   validates :borrowers, length: { within: 1..2 }
   validates :loans, length: { minimum: 1 }
 
-  def initialize(provided_id:)
+  def initialize(provided_id)
     @provided_id = provided_id
   end
 
   def self.build_from_string(string:)
     tokens = string.split(" ")
-    Application.new(provided_id: tokens[1])
+    self.new(tokens[1])
   end
 
   def credit_score

@@ -1,4 +1,6 @@
-RSpec.describe ApplicationService do
+require "rails_helper"
+
+RSpec.describe ApplicationReviewService do
   describe "#review" do
     subject { described_class.review(file: file) }
 

@@ -1,6 +1,8 @@
+require "rails_helper"
+
 RSpec.describe ApplicationDecision do
   describe "#approved?" do
-    subject { described_class.new(application_id: 1, dti: dti, credit_score: credit_score).approved? }
+    subject { described_class.new(loan_application_id: 1, dti: dti, credit_score: credit_score).approved? }
 
     let(:dti) { BigDecimal("0.1") }
     let(:credit_score) { 700 }

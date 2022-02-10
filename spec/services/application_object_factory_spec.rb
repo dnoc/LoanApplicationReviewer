@@ -1,10 +1,12 @@
+require "rails_helper"
+
 RSpec.describe ApplicationObjectFactory do
   describe "#from_string" do
-    subject { described_class.from_string(string: input, application_id: 1) }
+    subject { described_class.from_string(string: input, loan_application_id: 1) }
 
-    describe("with application input string") do
+    describe("with loan application input string") do
       let(:input) { "APPLICATION A1" }
-      it { is_expected.to be_a Application }
+      it { is_expected.to be_a LoanApplication }
     end
 
     describe("with loan input string") do

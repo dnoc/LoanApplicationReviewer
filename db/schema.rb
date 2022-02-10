@@ -13,60 +13,60 @@
 ActiveRecord::Schema.define(version: 2022_02_07_200515) do
 
   create_table "application_decisions", force: :cascade do |t|
-    t.integer "applications_id"
+    t.integer "loan_applications_id"
     t.boolean "approved", default: false, null: false
     t.decimal "dti", precision: 5, scale: 4
     t.integer "credit_score", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["applications_id"], name: "index_application_decisions_on_applications_id"
-  end
-
-  create_table "applications", force: :cascade do |t|
-    t.string "provided_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.index ["loan_applications_id"], name: "index_application_decisions_on_loan_applications_id"
   end
 
   create_table "borrowers", force: :cascade do |t|
-    t.integer "applications_id"
+    t.integer "loan_applications_id"
     t.string "name", null: false
     t.integer "credit_score", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["applications_id"], name: "index_borrowers_on_applications_id"
+    t.index ["loan_applications_id"], name: "index_borrowers_on_loan_applications_id"
   end
 
   create_table "incomes", force: :cascade do |t|
-    t.integer "applications_id"
+    t.integer "loan_applications_id"
     t.string "name", null: false
     t.string "kind", null: false
     t.decimal "monthly_amount", precision: 9, scale: 2
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["applications_id"], name: "index_incomes_on_applications_id"
+    t.index ["loan_applications_id"], name: "index_incomes_on_loan_applications_id"
   end
 
   create_table "liabilities", force: :cascade do |t|
-    t.integer "applications_id"
+    t.integer "loan_applications_id"
     t.string "comma_separated_names", null: false
     t.string "kind", null: false
     t.decimal "monthly_payment", precision: 9, scale: 2
     t.decimal "outstanding_balance", precision: 9, scale: 2
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["applications_id"], name: "index_liabilities_on_applications_id"
+    t.index ["loan_applications_id"], name: "index_liabilities_on_loan_applications_id"
+  end
+
+  create_table "loan_applications", force: :cascade do |t|
+    t.string "provided_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "loans", force: :cascade do |t|
-    t.integer "applications_id"
+    t.integer "loan_applications_id"
     t.decimal "principal_amount", precision: 9, scale: 2
     t.integer "years", null: false
     t.decimal "rate", precision: 5, scale: 4
     t.decimal "monthly_payment", precision: 9, scale: 2
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["applications_id"], name: "index_loans_on_applications_id"
+    t.index ["loan_applications_id"], name: "index_loans_on_loan_applications_id"
   end
 
 end

@@ -1,10 +1,12 @@
+require "rails_helper"
+
 RSpec.describe Liability do
   describe "#applicable_to_dti?" do
     subject { liability.applicable_to_dti? }
 
     let(:liability) do
       described_class.new(
-        application_id: 1,
+        loan_application_id: 1,
         comma_separated_names: "Brent,Daphne",
         kind: "CreditCard",
         monthly_payment: monthly_payment,
